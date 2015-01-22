@@ -14,7 +14,7 @@
 
 #  Configuration
 
-The current version of prestashop is version 1.6. It is available either by
+The current version of prestashop is version 1.0. It is available either by
 cloning this repository or downloading the .zip or .tgz file from the
 [releases page](https://github.com/CoinzoneBV/coinzone-prestashop/releases/tag/1.0).
 
