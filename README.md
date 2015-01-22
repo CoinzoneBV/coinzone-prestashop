@@ -16,7 +16,7 @@
 
 The current version of the prestashop plugin is version 1.0. It is available either by
 cloning this repository or downloading the .zip or .tgz file from the
-[releases page](https://github.com/CoinzoneBV/coinzone-prestashop/releases/tag/1.0).
+[download page](https://github.com/CoinzoneBV/coinzone-prestashop/releases/download/1.0/coinzone-woocommerce.zip).
 
 1. Upload files to your PrestaShop installation.
 
