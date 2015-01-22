@@ -62,7 +62,7 @@ class CoinzoneAdapterPaymentNotificationModuleFrontController extends ModuleFron
 			}
 			else
 			{
-				if ($transaction_response->getStatus() == 'COMPLETE')
+				if (in_array($transaction_response->getStatus(), array( 'PAID', 'COMPLETE')))
 					$order_status = (int)Configuration::get('PS_OS_PAYMENT');
 				elseif ($transaction_response->getStatus() == 'REFUND')
 				{
@@ -160,6 +160,8 @@ class CoinzoneAdapterPaymentNotificationModuleFrontController extends ModuleFron
 		else
 			$request_headers = getallheaders();
 
+		foreach ($request_headers as $key => $value)
+			$request_headers[Tools::strtolower($key)] = $value;
 		return $request_headers;
 	}
 }

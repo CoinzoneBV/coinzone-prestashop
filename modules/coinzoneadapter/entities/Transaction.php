@@ -559,7 +559,8 @@ class Transaction
 			for ($index = 0; $index < $items; $index++)
 			{
 				$display_order_information_array['items'][$index]['unitPrice'] = $display_order_information_array['items'][$index]['unit_price'];
-				$display_order_information_array['items'][$index]['shortDescription'] = $display_order_information_array['items'][$index]['short_description'];
+				$display_order_information_array['items'][$index]['shortDescription'] = Tools::substr(
+					strip_tags($display_order_information_array['items'][$index]['short_description']), 0, 250);
 				$display_order_information_array['items'][$index]['imageUrl'] = $display_order_information_array['items'][$index]['image_url'];
 
 				unset($display_order_information_array['items'][$index]['unit_price']);
