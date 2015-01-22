@@ -7,7 +7,7 @@
 #  System Requirements
 
   * [merchant.coinzone.com](https://merchant.coinzone.com/signup?source=prestashop) account
-  * PrestaShop 1.5+
+  * [PrestaShop](https://www.prestashop.com/en/system-requirements) 1.5+
   * PHP 5+
   * Curl PHP Extension
   * JSON PHP Extension
