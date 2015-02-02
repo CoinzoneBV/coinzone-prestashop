@@ -153,7 +153,7 @@ class CoinzoneAdapter extends PaymentModule
 				if ($error === false)
 				{
 					Configuration::updateValue('COINZONE_CLIENT_CODE', $coinzone_client_code);
-					Configuration::updateValue('COINZONE_API_KEY', $coinzone_api_key, true);
+					Configuration::updateValue('COINZONE_API_KEY', addslashes($coinzone_api_key));
 					$output .= $this->displayConfirmation($this->l('Settings updated'));
 				}
 			}
