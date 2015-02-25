@@ -94,6 +94,8 @@ class CoinzoneAdapter extends PaymentModule
 			!$this->installDb() || !Configuration::updateValue('COINZONE_TITLE', 'Coinzone Adapter') || !$this->registerHook('displayBackOfficeHeader'))
 			return false;
 
+		Configuration::updateValue('COINZONE_PLUGIN_VERSION', $this->version);
+
 		return true;
 	}
 
