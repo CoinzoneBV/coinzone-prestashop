@@ -41,7 +41,7 @@ class CoinzoneAdapter extends PaymentModule
 	public function __construct()
 	{
 		$this->name                   = 'coinzoneadapter';
-		$this->version                = 1.0;
+		$this->version                = 1.1;
 		$this->author                 = 'Coinzone';
 		$this->className              = 'CoinzoneAdapter';
 		$this->currencies             = true;
@@ -94,7 +94,9 @@ class CoinzoneAdapter extends PaymentModule
 			!$this->installDb() || !Configuration::updateValue('COINZONE_TITLE', 'Coinzone Adapter') || !$this->registerHook('displayBackOfficeHeader'))
 			return false;
 
-		return true;
+        Configuration::updateValue('COINZONE_PLUGIN_VERSION', $this->version);
+
+        return true;
 	}
 
 	/**
@@ -323,6 +325,7 @@ class CoinzoneAdapter extends PaymentModule
 		if (isset($_REQUEST['refund_amount']) && isset($_REQUEST['ref_no']))
 		{
 			$transaction = new Transaction();
+            $transaction->setPluginVersion(Configuration::get('COINZONE_PLUGIN_VERSION'));
 			$transaction->setClientCode(Configuration::get('COINZONE_CLIENT_CODE'));
 			$transaction->setApiKey(Configuration::get('COINZONE_API_KEY'));
 			$transaction->setAmount(round((float)$_REQUEST['refund_amount'], 2));

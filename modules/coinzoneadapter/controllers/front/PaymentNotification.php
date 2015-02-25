@@ -119,6 +119,7 @@ class CoinzoneAdapterPaymentNotificationModuleFrontController extends ModuleFron
 		$headers = $this->getHeaders();
 
 		$transaction = new Transaction();
+        $transaction->setPluginVersion(Configuration::get('COINZONE_PLUGIN_VERSION'));
 		$transaction->setApiKey(Configuration::get('COINZONE_API_KEY'));
 		$signature = $transaction->createSignature(
 			$this->context->link->getModuleLink('coinzoneadapter', 'paymentNotification'),

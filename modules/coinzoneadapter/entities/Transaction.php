@@ -19,6 +19,8 @@ require_once dirname(__FILE__).'/CancelTransactionResponse.php';
 class Transaction
 {
 
+    private $plugin_version;
+
 	/**
 	 * @var string
 	 */
@@ -83,6 +85,22 @@ class Transaction
 	 * @var
 	 */
 	private $reason;
+
+    /**
+     * @return mixed
+     */
+    public function getPluginVersion()
+    {
+        return $this->plugin_version;
+    }
+
+    /**
+     * @param mixed $plugin_version
+     */
+    public function setPluginVersion($plugin_version)
+    {
+        $this->plugin_version = $plugin_version;
+    }
 
 	/**
 	 * @param mixed $reason
@@ -315,11 +333,12 @@ class Transaction
 			'merchantReference'       => $this->getMerchantReference(),
 			'description'             => $this->getDescription(),
 			'displayOrderInformation' => $display_order_information,
-			'userAgent' 		  => 'prestashop'
+            'userAgent' => 'Prestashop '. _PS_VERSION_ . ' - Plugin Version ' . $this->getPluginVersion()
 		);
 
 		$signature = $this->createSignature($this->api_url.'transaction', Tools::jsonEncode($paydata), $timestamp);
 		$response = $this->sendApiCurl($this->api_url.'transaction', $headers, $signature, $paydata);
+
 		if (empty($response) || $response->status->code != 201)
 		{
 			$error = Tools::displayError(sprintf('addTransaction: %s', (empty($response) ? null : $response->status->message)));
@@ -414,7 +433,8 @@ class Transaction
 			'amount'   => $this->getAmount(),
 			'currency' => $this->getCurrency(),
 			'refNo'    => $ref_no,
-			'reason'   => $this->getReason()
+			'reason'   => $this->getReason(),
+            'userAgent' => 'Prestashop '. _PS_VERSION_ . ' - Plugin Version ' . $this->getPluginVersion()
 		);
 
 		$signature = $this->createSignature($this->api_url.'cancel_request', Tools::jsonEncode($paydata),
@@ -463,6 +483,7 @@ class Transaction
 	{
 		$string_to_sign = (empty($string) ? '' : $string).$api_url.$timestamp;
 		$signature = $this->sha256Hmac($string_to_sign, $this->getApiKey());
+
 		return $signature;
 	}
 

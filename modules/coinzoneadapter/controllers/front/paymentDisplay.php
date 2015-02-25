@@ -80,6 +80,7 @@ class CoinzoneAdapterPaymentDisplayModuleFrontController extends ModuleFrontCont
 		$customer = new Customer((int)$cart->id_customer);
 
 		$transaction = new Transaction();
+        $transaction->setPluginVersion(Configuration::get('COINZONE_PLUGIN_VERSION'));
 		$transaction->setClientCode(Configuration::get('COINZONE_CLIENT_CODE'));
 		$transaction->setApiKey(Configuration::get('COINZONE_API_KEY'));
 		$transaction->setPrestashopContext($this->context->cart);
