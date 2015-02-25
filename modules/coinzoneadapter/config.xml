@@ -2,7 +2,7 @@
 <module>
 	<name>coinzoneadapter</name>
 	<displayName><![CDATA[Coinzone Adapter]]></displayName>
-	<version><![CDATA[1.1]]></version>
+	<version><![CDATA[1.1.0]]></version>
 	<description><![CDATA[Module for making payments using the Coinzone API.]]></description>
 	<author><![CDATA[Coinzone]]></author>
 	<tab><![CDATA[payments_gateways]]></tab>

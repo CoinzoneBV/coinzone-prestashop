@@ -19,7 +19,10 @@ require_once dirname(__FILE__).'/CancelTransactionResponse.php';
 class Transaction
 {
 
-    private $plugin_version;
+	/**
+	 * @var string
+	 */
+	private $plugin_version;
 
 	/**
 	 * @var string
@@ -86,21 +89,21 @@ class Transaction
 	 */
 	private $reason;
 
-    /**
-     * @return mixed
-     */
-    public function getPluginVersion()
-    {
-        return $this->plugin_version;
-    }
+	/**
+	*  @return mixed
+	*/
+	public function getPluginVersion()
+	{
+	return $this->plugin_version;
+	}
 
-    /**
-     * @param mixed $plugin_version
-     */
-    public function setPluginVersion($plugin_version)
-    {
-        $this->plugin_version = $plugin_version;
-    }
+	/**
+	 * @param mixed $plugin_version
+	 */
+	public function setPluginVersion($plugin_version)
+	{
+	$this->plugin_version = $plugin_version;
+	}
 
 	/**
 	 * @param mixed $reason
@@ -333,7 +336,7 @@ class Transaction
 			'merchantReference'       => $this->getMerchantReference(),
 			'description'             => $this->getDescription(),
 			'displayOrderInformation' => $display_order_information,
-            'userAgent' => 'Prestashop '. _PS_VERSION_ . ' - Plugin Version ' . $this->getPluginVersion()
+			'userAgent' => 'Prestashop '._PS_VERSION_.' - Plugin Version '.$this->getPluginVersion()
 		);
 
 		$signature = $this->createSignature($this->api_url.'transaction', Tools::jsonEncode($paydata), $timestamp);
@@ -434,7 +437,7 @@ class Transaction
 			'currency' => $this->getCurrency(),
 			'refNo'    => $ref_no,
 			'reason'   => $this->getReason(),
-            'userAgent' => 'Prestashop '. _PS_VERSION_ . ' - Plugin Version ' . $this->getPluginVersion()
+			'userAgent' => 'Prestashop '._PS_VERSION_.' - Plugin Version '.$this->getPluginVersion()
 		);
 
 		$signature = $this->createSignature($this->api_url.'cancel_request', Tools::jsonEncode($paydata),

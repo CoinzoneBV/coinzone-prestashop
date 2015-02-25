@@ -119,7 +119,7 @@ class CoinzoneAdapterPaymentNotificationModuleFrontController extends ModuleFron
 		$headers = $this->getHeaders();
 
 		$transaction = new Transaction();
-        $transaction->setPluginVersion(Configuration::get('COINZONE_PLUGIN_VERSION'));
+		$transaction->setPluginVersion(Configuration::get('COINZONE_PLUGIN_VERSION'));
 		$transaction->setApiKey(Configuration::get('COINZONE_API_KEY'));
 		$signature = $transaction->createSignature(
 			$this->context->link->getModuleLink('coinzoneadapter', 'paymentNotification'),
@@ -142,24 +142,19 @@ class CoinzoneAdapterPaymentNotificationModuleFrontController extends ModuleFron
 
 	private function getHeaders()
 	{
-		if (! function_exists('getallheaders'))
+		$headers = array();
+		foreach ($_SERVER as $name => $value)
 		{
-			$headers = array();
-			foreach ($_SERVER as $name => $value)
+			if (Tools::strtolower(Tools::substr($name, 0, 5)) == 'http_')
 			{
-				if (Tools::strtolower(Tools::substr($name, 0, 5)) == 'http_')
-				{
-					$headers[str_replace(
-						' ',
-						'-',
-						ucwords(Tools::strtolower(str_replace('_', ' ', Tools::substr($name, 5))))
-					)] = $value;
-				}
+				$headers[str_replace(
+				' ',
+				'-',
+				ucwords(Tools::strtolower(str_replace('_', ' ', Tools::substr($name, 5))))
+				)] = $value;
 			}
-			$request_headers = $headers;
 		}
-		else
-			$request_headers = getallheaders();
+		$request_headers = $headers;
 
 		foreach ($request_headers as $key => $value)
 			$request_headers[Tools::strtolower($key)] = $value;

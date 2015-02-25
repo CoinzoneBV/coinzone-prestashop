@@ -41,7 +41,7 @@ class CoinzoneAdapter extends PaymentModule
 	public function __construct()
 	{
 		$this->name                   = 'coinzoneadapter';
-		$this->version                = 1.1;
+		$this->version                = '1.1.0';
 		$this->author                 = 'Coinzone';
 		$this->className              = 'CoinzoneAdapter';
 		$this->currencies             = true;
@@ -252,7 +252,7 @@ class CoinzoneAdapter extends PaymentModule
 	 */
 	public function hookDisplayHeader()
 	{
-		$this->context->controller->addCSS($this->_path.'css/style.css', 'all');
+		$this->context->controller->addCSS($this->_path.'views/css/style.css', 'all');
 	}
 
 	/**
@@ -420,7 +420,7 @@ class CoinzoneAdapter extends PaymentModule
 	 */
 	public function hookDisplayBackOfficeHeader()
 	{
-		$this->context->controller->addCSS(($this->_path).'css/admin.css', 'all');
+		$this->context->controller->addCSS(($this->_path).'views/css/admin.css', 'all');
 	}
 
 }

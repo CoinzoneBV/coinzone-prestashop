@@ -10,7 +10,7 @@
     <div class="col-xs-12">
         <p class="payment_module">
             <a class="coinzone" href="{$this_path_ssl|escape:'htmlall'}" title="{l s='Pay using coinzone' mod='coinzoneadapter'}">
-                <img src="{$this_path_bw|escape:'htmlall'}img/bitcoin.jpg" alt="{l s='Pay using coinzone' mod='coinzoneadapter'}" width="168"
+                <img src="{$this_path_bw|escape:'htmlall'}views/img/bitcoin.jpg" alt="{l s='Pay using coinzone' mod='coinzoneadapter'}" width="168"
                      height="64"/>
                 {l s='Pay with Bitcoin' mod='coinzoneadapter'}
             </a>
